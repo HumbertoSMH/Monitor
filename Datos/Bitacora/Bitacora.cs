@@ -16,7 +16,7 @@ namespace Datos.Bitacora
             try
             {
                 db.bitacora.Add(model);
-                await db.SaveChangesAsync();  
+                db.SaveChanges();  
                 return true;    
             }
             catch (Exception)

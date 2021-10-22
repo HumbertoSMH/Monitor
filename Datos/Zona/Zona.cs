@@ -16,7 +16,7 @@ namespace Datos.Zona
             try
             {
                 db.zona.Add(model);
-                await db.SaveChangesAsync();  
+                db.SaveChanges();  
                 return true;
             }
             catch (Exception)

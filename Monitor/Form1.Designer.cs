@@ -36,6 +36,7 @@
             this.manipularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.historicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarDispotivoAZonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             // 
             this.dispositivosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarToolStripMenuItem,
+            this.agregarDispotivoAZonaToolStripMenuItem,
             this.manipularToolStripMenuItem});
             this.dispositivosToolStripMenuItem.Name = "dispositivosToolStripMenuItem";
             this.dispositivosToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
@@ -94,12 +96,21 @@
             this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
             this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.agregarToolStripMenuItem1.Text = "Agregar";
+            this.agregarToolStripMenuItem1.Click += new System.EventHandler(this.agregarToolStripMenuItem1_Click);
             // 
             // historicoToolStripMenuItem
             // 
             this.historicoToolStripMenuItem.Name = "historicoToolStripMenuItem";
             this.historicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.historicoToolStripMenuItem.Text = "Historico";
+            this.historicoToolStripMenuItem.Click += new System.EventHandler(this.historicoToolStripMenuItem_Click);
+            // 
+            // agregarDispotivoAZonaToolStripMenuItem
+            // 
+            this.agregarDispotivoAZonaToolStripMenuItem.Name = "agregarDispotivoAZonaToolStripMenuItem";
+            this.agregarDispotivoAZonaToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.agregarDispotivoAZonaToolStripMenuItem.Text = "Agregar dispotivo a zona";
+            this.agregarDispotivoAZonaToolStripMenuItem.Click += new System.EventHandler(this.agregarDispotivoAZonaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -127,6 +138,7 @@
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bitacoraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarDispotivoAZonaToolStripMenuItem;
     }
 }
 

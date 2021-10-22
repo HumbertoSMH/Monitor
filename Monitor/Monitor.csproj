@@ -61,6 +61,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>domoticaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="domoticaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>domoticaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="domoticaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>domoticaDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="domoticaDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>domoticaDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="domoticaDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>domoticaDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="domoticaDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>domoticaDataSet5.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +98,24 @@
     <Compile Include="AgregarDispositivo.Designer.cs">
       <DependentUpon>AgregarDispositivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Bitacora\Bitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Bitacora\Bitacora.Designer.cs">
+      <DependentUpon>Bitacora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Zona\AgregarDispotivoAZona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Zona\AgregarDispotivoAZona.Designer.cs">
+      <DependentUpon>AgregarDispotivoAZona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Zona\AgregarZona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Zona\AgregarZona.Designer.cs">
+      <DependentUpon>AgregarZona.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -80,6 +123,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarDispositivo.resx">
       <DependentUpon>AgregarDispositivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Bitacora\Bitacora.resx">
+      <DependentUpon>Bitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Zona\AgregarDispotivoAZona.resx">
+      <DependentUpon>AgregarDispotivoAZona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Zona\AgregarZona.resx">
+      <DependentUpon>AgregarZona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +152,61 @@
     </None>
     <None Include="domoticaDataSet.xss">
       <DependentUpon>domoticaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet1.xsc">
+      <DependentUpon>domoticaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>domoticaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="domoticaDataSet1.xss">
+      <DependentUpon>domoticaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet2.xsc">
+      <DependentUpon>domoticaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>domoticaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="domoticaDataSet2.xss">
+      <DependentUpon>domoticaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet3.xsc">
+      <DependentUpon>domoticaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>domoticaDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="domoticaDataSet3.xss">
+      <DependentUpon>domoticaDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet4.xsc">
+      <DependentUpon>domoticaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>domoticaDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="domoticaDataSet4.xss">
+      <DependentUpon>domoticaDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet5.xsc">
+      <DependentUpon>domoticaDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="domoticaDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>domoticaDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="domoticaDataSet5.xss">
+      <DependentUpon>domoticaDataSet5.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

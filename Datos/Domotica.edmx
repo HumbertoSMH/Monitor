@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id_bitacora" />
           </Key>
-          <Property Name="id_bitacora" Type="int" Nullable="false" />
+          <Property Name="id_bitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_dispositivo" Type="int" Nullable="false" />
           <Property Name="fechaEvento" Type="datetime" Nullable="false" />
           <Property Name="descripcionEvento" Type="varchar" MaxLength="1050" Nullable="false" />
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="id_zona" />
           </Key>
-          <Property Name="id_zona" Type="int" Nullable="false" />
+          <Property Name="id_zona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_zona" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="fecha_alta" Type="datetime" Nullable="false" />
         </EntityType>

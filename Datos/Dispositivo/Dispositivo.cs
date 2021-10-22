@@ -53,5 +53,19 @@ namespace Datos.Dispositivo
                 throw;
             }
         }
+
+        public async Task<bool> AgregarAZona(zonaDispositivo model)
+        {
+            try
+            {
+                db.zonaDispositivo.Add(model);
+                db.SaveChanges();
+                return true; 
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

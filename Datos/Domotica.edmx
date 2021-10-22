@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="domoticaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bitacora">
+          <Key>
+            <PropertyRef Name="id_bitacora" />
+          </Key>
+          <Property Name="id_bitacora" Type="int" Nullable="false" />
+          <Property Name="id_dispositivo" Type="int" Nullable="false" />
+          <Property Name="fechaEvento" Type="datetime" Nullable="false" />
+          <Property Name="descripcionEvento" Type="varchar" MaxLength="1050" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dispositivo">
+          <Key>
+            <PropertyRef Name="id_dispositivo" />
+          </Key>
+          <Property Name="id_dispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_dispotivo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="id_tipo_dispositivo" Type="int" Nullable="false" />
+          <Property Name="fecha_alta" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipoDispositivo">
+          <Key>
+            <PropertyRef Name="id_tipo_dispositivo" />
+          </Key>
+          <Property Name="id_tipo_dispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_tipo_dispositivo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="fecha_alta" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zona">
+          <Key>
+            <PropertyRef Name="id_zona" />
+          </Key>
+          <Property Name="id_zona" Type="int" Nullable="false" />
+          <Property Name="nombre_zona" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="fecha_alta" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zonaDispositivo">
+          <Key>
+            <PropertyRef Name="id_zona_dispositivo" />
+          </Key>
+          <Property Name="id_zona_dispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_zona" Type="int" Nullable="false" />
+          <Property Name="id_dispositivo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_bitacora_dispositivo">
+          <End Role="dispositivo" Type="Self.dispositivo" Multiplicity="1" />
+          <End Role="bitacora" Type="Self.bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dispositivo">
+              <PropertyRef Name="id_dispositivo" />
+            </Principal>
+            <Dependent Role="bitacora">
+              <PropertyRef Name="id_dispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dispositivo_tipoDispositivo">
+          <End Role="tipoDispositivo" Type="Self.tipoDispositivo" Multiplicity="1" />
+          <End Role="dispositivo" Type="Self.dispositivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoDispositivo">
+              <PropertyRef Name="id_tipo_dispositivo" />
+            </Principal>
+            <Dependent Role="dispositivo">
+              <PropertyRef Name="id_tipo_dispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonaDispositivo_dispositivo">
+          <End Role="dispositivo" Type="Self.dispositivo" Multiplicity="1" />
+          <End Role="zonaDispositivo" Type="Self.zonaDispositivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dispositivo">
+              <PropertyRef Name="id_dispositivo" />
+            </Principal>
+            <Dependent Role="zonaDispositivo">
+              <PropertyRef Name="id_dispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonaDispositivo_zona">
+          <End Role="zona" Type="Self.zona" Multiplicity="1" />
+          <End Role="zonaDispositivo" Type="Self.zonaDispositivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zona">
+              <PropertyRef Name="id_zona" />
+            </Principal>
+            <Dependent Role="zonaDispositivo">
+              <PropertyRef Name="id_zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="domoticaModelStoreContainer">
+          <EntitySet Name="bitacora" EntityType="Self.bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dispositivo" EntityType="Self.dispositivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoDispositivo" EntityType="Self.tipoDispositivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zona" EntityType="Self.zona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zonaDispositivo" EntityType="Self.zonaDispositivo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_bitacora_dispositivo" Association="Self.FK_bitacora_dispositivo">
+            <End Role="dispositivo" EntitySet="dispositivo" />
+            <End Role="bitacora" EntitySet="bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dispositivo_tipoDispositivo" Association="Self.FK_dispositivo_tipoDispositivo">
+            <End Role="tipoDispositivo" EntitySet="tipoDispositivo" />
+            <End Role="dispositivo" EntitySet="dispositivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonaDispositivo_dispositivo" Association="Self.FK_zonaDispositivo_dispositivo">
+            <End Role="dispositivo" EntitySet="dispositivo" />
+            <End Role="zonaDispositivo" EntitySet="zonaDispositivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonaDispositivo_zona" Association="Self.FK_zonaDispositivo_zona">
+            <End Role="zona" EntitySet="zona" />
+            <End Role="zonaDispositivo" EntitySet="zonaDispositivo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="domoticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="domoticaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bitacora" EntityType="domoticaModel.bitacora" />
+          <EntitySet Name="dispositivo" EntityType="domoticaModel.dispositivo" />
+          <EntitySet Name="tipoDispositivo" EntityType="domoticaModel.tipoDispositivo" />
+          <EntitySet Name="zona" EntityType="domoticaModel.zona" />
+          <EntitySet Name="zonaDispositivo" EntityType="domoticaModel.zonaDispositivo" />
+          <AssociationSet Name="FK_bitacora_dispositivo" Association="domoticaModel.FK_bitacora_dispositivo">
+            <End Role="dispositivo" EntitySet="dispositivo" />
+            <End Role="bitacora" EntitySet="bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dispositivo_tipoDispositivo" Association="domoticaModel.FK_dispositivo_tipoDispositivo">
+            <End Role="tipoDispositivo" EntitySet="tipoDispositivo" />
+            <End Role="dispositivo" EntitySet="dispositivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonaDispositivo_dispositivo" Association="domoticaModel.FK_zonaDispositivo_dispositivo">
+            <End Role="dispositivo" EntitySet="dispositivo" />
+            <End Role="zonaDispositivo" EntitySet="zonaDispositivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_zonaDispositivo_zona" Association="domoticaModel.FK_zonaDispositivo_zona">
+            <End Role="zona" EntitySet="zona" />
+            <End Role="zonaDispositivo" EntitySet="zonaDispositivo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bitacora">
+          <Key>
+            <PropertyRef Name="id_bitacora" />
+          </Key>
+          <Property Name="id_bitacora" Type="Int32" Nullable="false" />
+          <Property Name="id_dispositivo" Type="Int32" Nullable="false" />
+          <Property Name="fechaEvento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="descripcionEvento" Type="String" Nullable="false" MaxLength="1050" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dispositivo" Relationship="domoticaModel.FK_bitacora_dispositivo" FromRole="bitacora" ToRole="dispositivo" />
+        </EntityType>
+        <EntityType Name="dispositivo">
+          <Key>
+            <PropertyRef Name="id_dispositivo" />
+          </Key>
+          <Property Name="id_dispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_dispotivo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipo_dispositivo" Type="Int32" Nullable="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="bitacora" Relationship="domoticaModel.FK_bitacora_dispositivo" FromRole="dispositivo" ToRole="bitacora" />
+          <NavigationProperty Name="tipoDispositivo" Relationship="domoticaModel.FK_dispositivo_tipoDispositivo" FromRole="dispositivo" ToRole="tipoDispositivo" />
+          <NavigationProperty Name="zonaDispositivo" Relationship="domoticaModel.FK_zonaDispositivo_dispositivo" FromRole="dispositivo" ToRole="zonaDispositivo" />
+        </EntityType>
+        <EntityType Name="tipoDispositivo">
+          <Key>
+            <PropertyRef Name="id_tipo_dispositivo" />
+          </Key>
+          <Property Name="id_tipo_dispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_tipo_dispositivo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="dispositivo" Relationship="domoticaModel.FK_dispositivo_tipoDispositivo" FromRole="tipoDispositivo" ToRole="dispositivo" />
+        </EntityType>
+        <EntityType Name="zona">
+          <Key>
+            <PropertyRef Name="id_zona" />
+          </Key>
+          <Property Name="id_zona" Type="Int32" Nullable="false" />
+          <Property Name="nombre_zona" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="zonaDispositivo" Relationship="domoticaModel.FK_zonaDispositivo_zona" FromRole="zona" ToRole="zonaDispositivo" />
+        </EntityType>
+        <EntityType Name="zonaDispositivo">
+          <Key>
+            <PropertyRef Name="id_zona_dispositivo" />
+          </Key>
+          <Property Name="id_zona_dispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_zona" Type="Int32" Nullable="false" />
+          <Property Name="id_dispositivo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="dispositivo" Relationship="domoticaModel.FK_zonaDispositivo_dispositivo" FromRole="zonaDispositivo" ToRole="dispositivo" />
+          <NavigationProperty Name="zona" Relationship="domoticaModel.FK_zonaDispositivo_zona" FromRole="zonaDispositivo" ToRole="zona" />
+        </EntityType>
+        <Association Name="FK_bitacora_dispositivo">
+          <End Type="domoticaModel.dispositivo" Role="dispositivo" Multiplicity="1" />
+          <End Type="domoticaModel.bitacora" Role="bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dispositivo">
+              <PropertyRef Name="id_dispositivo" />
+            </Principal>
+            <Dependent Role="bitacora">
+              <PropertyRef Name="id_dispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dispositivo_tipoDispositivo">
+          <End Type="domoticaModel.tipoDispositivo" Role="tipoDispositivo" Multiplicity="1" />
+          <End Type="domoticaModel.dispositivo" Role="dispositivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoDispositivo">
+              <PropertyRef Name="id_tipo_dispositivo" />
+            </Principal>
+            <Dependent Role="dispositivo">
+              <PropertyRef Name="id_tipo_dispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonaDispositivo_dispositivo">
+          <End Type="domoticaModel.dispositivo" Role="dispositivo" Multiplicity="1" />
+          <End Type="domoticaModel.zonaDispositivo" Role="zonaDispositivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dispositivo">
+              <PropertyRef Name="id_dispositivo" />
+            </Principal>
+            <Dependent Role="zonaDispositivo">
+              <PropertyRef Name="id_dispositivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_zonaDispositivo_zona">
+          <End Type="domoticaModel.zona" Role="zona" Multiplicity="1" />
+          <End Type="domoticaModel.zonaDispositivo" Role="zonaDispositivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zona">
+              <PropertyRef Name="id_zona" />
+            </Principal>
+            <Dependent Role="zonaDispositivo">
+              <PropertyRef Name="id_zona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="domoticaModelStoreContainer" CdmEntityContainer="domoticaEntities">
+          <EntitySetMapping Name="bitacora">
+            <EntityTypeMapping TypeName="domoticaModel.bitacora">
+              <MappingFragment StoreEntitySet="bitacora">
+                <ScalarProperty Name="descripcionEvento" ColumnName="descripcionEvento" />
+                <ScalarProperty Name="fechaEvento" ColumnName="fechaEvento" />
+                <ScalarProperty Name="id_dispositivo" ColumnName="id_dispositivo" />
+                <ScalarProperty Name="id_bitacora" ColumnName="id_bitacora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dispositivo">
+            <EntityTypeMapping TypeName="domoticaModel.dispositivo">
+              <MappingFragment StoreEntitySet="dispositivo">
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="id_tipo_dispositivo" ColumnName="id_tipo_dispositivo" />
+                <ScalarProperty Name="nombre_dispotivo" ColumnName="nombre_dispotivo" />
+                <ScalarProperty Name="id_dispositivo" ColumnName="id_dispositivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoDispositivo">
+            <EntityTypeMapping TypeName="domoticaModel.tipoDispositivo">
+              <MappingFragment StoreEntitySet="tipoDispositivo">
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="nombre_tipo_dispositivo" ColumnName="nombre_tipo_dispositivo" />
+                <ScalarProperty Name="id_tipo_dispositivo" ColumnName="id_tipo_dispositivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zona">
+            <EntityTypeMapping TypeName="domoticaModel.zona">
+              <MappingFragment StoreEntitySet="zona">
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="nombre_zona" ColumnName="nombre_zona" />
+                <ScalarProperty Name="id_zona" ColumnName="id_zona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zonaDispositivo">
+            <EntityTypeMapping TypeName="domoticaModel.zonaDispositivo">
+              <MappingFragment StoreEntitySet="zonaDispositivo">
+                <ScalarProperty Name="id_dispositivo" ColumnName="id_dispositivo" />
+                <ScalarProperty Name="id_zona" ColumnName="id_zona" />
+                <ScalarProperty Name="id_zona_dispositivo" ColumnName="id_zona_dispositivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

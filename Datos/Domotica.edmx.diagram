@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d40196aaf4a0416c80d6f2b88118ae2a" Name="Diagram1">
+        <EntityTypeShape EntityType="domoticaModel.bitacora" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="domoticaModel.dispositivo" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="domoticaModel.tipoDispositivo" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="domoticaModel.zona" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="domoticaModel.zonaDispositivo" Width="1.5" PointX="5.25" PointY="3.625" />
+        <AssociationConnector Association="domoticaModel.FK_bitacora_dispositivo" />
+        <AssociationConnector Association="domoticaModel.FK_dispositivo_tipoDispositivo" />
+        <AssociationConnector Association="domoticaModel.FK_zonaDispositivo_dispositivo" />
+        <AssociationConnector Association="domoticaModel.FK_zonaDispositivo_zona" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
